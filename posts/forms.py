@@ -1,4 +1,5 @@
-from django.forms import ModelForm, forms
+from django.forms import ModelForm
+
 from .models import Post
 
 
@@ -7,9 +8,7 @@ class PostForm(ModelForm):
     class Meta:
         model = Post
         fields = ['group', 'text']
-
-    def clean_text(self):
-        text = self.cleaned_data['text']
-        if text == '':
-            raise forms.ValidationError('Вы не заполнили поле "Текст"')
-        return text
+        help_texts = {
+            'group': 'Группа в которой может быть опубликован текст',
+            'text': 'Текст публикации'
+        }
