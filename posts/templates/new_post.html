@@ -8,10 +8,7 @@
         <div class="card">
             <div class="card-header">Новая запись</div>
             <div class="card-body">
-                {% if form.errors %} <!--Я не понимаю, как это должно срабатывать в данной ситуации,
-                                        если перехват осуществляется встроенным валидатором
-                                        на основе свойств полей моделей. Или речь про ошибки,
-                                        несвязанные с заполненностью полей ?-->
+                {% if form.errors %}
                     <ol>
                     {% for error in form.errors %}
                         <li><strong>{{ error|escape }}</strong></li>
